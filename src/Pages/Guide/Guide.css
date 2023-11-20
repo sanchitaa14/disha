@@ -1,0 +1,43 @@
+.container{
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-top: 6rem;
+   margin-left: 8rem;
+
+}
+
+.card{
+  padding: 10px 20px 10px 10px;
+  margin: 20px 20px 20px 20px;
+  display: flex;
+  width: 500px;
+  height: 350px;
+  align-items: center;
+  box-shadow: 0 0 30px 6px rgb(164, 153, 153, 0.7);
+  border-radius: 8px;
+}
+
+.guide-details {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  overflow-y: hidden;
+}
+
+
+.guide-photo {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.guide-photo img {
+  width: 100%;
+  height: 100% ;
+  object-fit: cover;
+}

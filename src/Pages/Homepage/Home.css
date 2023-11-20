@@ -1,0 +1,115 @@
+.home {
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.front-page {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+.front-page-sky {
+    position: absolute;
+    z-index: -4;
+    width: 100%;
+    height: 100vh;
+}
+
+.front-page-middle {
+    position: absolute;
+    z-index: -3;
+    width: 100vw;
+    bottom: 0;
+}
+
+.front-page-left {
+    position: absolute;
+    z-index: -2;
+    left: 0;
+    bottom: 0;
+    width: 60vw;
+}
+
+.front-page-right {
+    position: absolute;
+    z-index: -2;
+    right: 0;
+    bottom: 0;
+    width: 60vw;
+}
+
+.front-page-bottom {
+    position: absolute;
+    width: 100vw;
+    bottom: 0;
+    z-index: -1;
+}
+
+.front-page-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    word-break: break-word;
+}
+
+.front-page-text p {
+    color: #2b4f49;
+    font-size: 60px;
+    text-align: center;
+    font-weight: 700;
+}
+
+.front-page-text button {
+    background-color: transparent;
+    padding: 10px 20px 10px 20px;
+    margin: 30px 10px 5px 10px;
+    border: none;
+    border-radius: 2px;
+    font-size: 18px;
+    transition: all linear;
+    transition-duration: 0.1s;
+}
+
+.front-page-text button:hover {
+    color: white;
+    background-color: #2b4f49;
+    /* outline: 1px solid #2b4f49; */
+    cursor: pointer;
+}
+.bottom-div {
+    display: flex;
+    width: 100vw;
+    height: 800px;
+    background-color: #7ba643;
+    border-top: 20px dashed #459136;
+    justify-content: center;
+    align-items: center;
+}
+.bottom-div-left,
+.bottom-div-right {
+    text-align: center;
+    display: flex;
+    margin: 0 70px 0 70px;
+    flex-direction: column;
+    font-size: 28px;
+    line-height: 60px;
+}
+
+.bottom-div img {
+    position: absolute;
+    transform: translate(-0%, 25%);
+}
+
+.bottom-div-left span,
+.bottom-div-right span {
+    font-weight: 800;
+    font-size: 48px;
+    margin-bottom: 40px;
+}
