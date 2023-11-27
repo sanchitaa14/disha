@@ -17,6 +17,7 @@ import left from "../src/Pages/Images/left.png";
 import right from "../src/Pages/Images/right.png";
 import bottom from "../src/Pages/Images/bottom.png";
 import AddGuide from "./AddGuide/AddGuide";
+import Map from "./Map/Map"
 
 function App() {
     return (
@@ -64,6 +65,7 @@ function App() {
                     <Route path="/about" element={<About />}></Route>
                     <Route path="/guide" element={<Guide />}></Route>
                     <Route path="/register" element={<AddGuide />}></Route>
+                    <Route path="/map" element={<Map />}></Route>
                 </Routes>
             </Router>
         </div>

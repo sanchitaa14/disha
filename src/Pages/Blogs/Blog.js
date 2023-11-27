@@ -1,50 +1,70 @@
-import React from "react";
-import "./Blog.css";
+import React, { useState, useEffect } from 'react';
+import './Blog.css';
 
-import sky from "../Images/sky.png";
-import bg from "../Images/bg.png";
-import left from "../Images/left.png";
-import right from "../Images/right.png";
-import bottom from "../Images/bottom.png";
+const Blog = () => {
+  const [posts, setPosts] = useState([]);
+  const [newPost, setNewPost] = useState('');
 
-function Blog() {
-    return (
-        <div className="blog">
-            <div id="front-page" className="front-page">
-                <img
-                    id="front-page-sky"
-                    className="front-page-sky"
-                    src={sky}
-                    alt=""
-                />
-                <img
-                    id="front-page-middle"
-                    className="front-page-middle"
-                    src={bg}
-                    alt=""
-                />
-                <img
-                    id="front-page-left"
-                    className="front-page-left"
-                    src={left}
-                    alt=""
-                />
-                <img
-                    id="front-page-right"
-                    className="front-page-right"
-                    src={right}
-                    alt=""
-                />
-                <img
-                    id="front-page-bottom"
-                    className="front-page-bottom"
-                    src={bottom}
-                    alt=""
-                />
-            </div>
-            <h1>Blog</h1>
+  const handlePost = async () => {
+    if (newPost.trim() !== '') {
+      try {
+        const response = await fetch('http://localhost:5000/api/blog', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ message: newPost }),
+        });
+
+        const data = await response.json();
+        if (data.success) {
+          // Fetch the updated blog posts after creating a new post
+          await fetchBlogPosts();
+          setNewPost('');
+        } else {
+          console.error('Failed to create blog post:', data.message);
+        }
+      } catch (error) {
+        console.error('Error creating blog post:', error);
+      }
+    }
+  };
+
+  const fetchBlogPosts = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/BlogPut');
+      const data = await response.json();
+      setPosts(data);
+    } catch (error) {
+      console.error('Error fetching blog posts:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchBlogPosts();
+  }, []); // Fetch blog posts on component mount
+
+  return (
+    <div className="blog-container">
+      <h2>My Blog</h2>
+
+      <div className="post-container">
+        <textarea
+          placeholder="Write your post..."
+          value={newPost}
+          onChange={(e) => setNewPost(e.target.value)}
+        />
+        <button onClick={handlePost}>Post</button>
+      </div>
+
+      {posts.map((post, index) => (
+        <div key={index} className="post">
+          <p>{post.message}</p>
+          <span className="timestamp">{post.timestamp}</span>
         </div>
-    );
-}
+      ))}
+    </div>
+  );
+};
 
 export default Blog;

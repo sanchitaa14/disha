@@ -99,12 +99,14 @@ function Login() {
                 <input type="email" 
                 placeholder="Email"
                  id="email-field" 
+                 name="email"
                  value={credentials.email}
                  onChange={onChange} />
                 <input
                     type="password"
                     placeholder="Password"
                     id="password-field"
+                    name="password"
                     onChange={onChange}
                     value={credentials.password}
                 />

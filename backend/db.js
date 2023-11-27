@@ -18,9 +18,6 @@ const mongoDB = async () => {
         console.log('Connected to MongoDB');
         const fetched_data = await mongoose.connection.db.collection("guideInfo");
         fetched_data.find({}).toArray(function (err, data) {
-          
-          
-            
           if (err) console.log(err);
             else {
                global.guideInfo = data; //we can update it anywhere in our app with global

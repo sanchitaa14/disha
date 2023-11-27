@@ -3,7 +3,6 @@ const router = express.Router()
 
 router.post("/guideData", (req,res) =>{
     try{
-
         res.send([global.guideInfo])
     } catch(error){
         console.error(error.message);

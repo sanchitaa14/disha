@@ -1,8 +1,79 @@
-.blog h1 {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -10%);
-    top: 10%;
-    font-family: "Poppins", sans-serif;
-    font-size: 60px;
+/* App.css */
+
+.blog-container{
+    margin: 10rem;
+
+
 }
+  
+  .blog {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  }
+  
+  .post-container {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .new-post,
+  .new-comment {
+    margin-bottom: 20px;
+  }
+  
+  textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: vertical;
+  }
+  
+  .post-button,
+  .comment-button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .post-button:hover,
+  .comment-button:hover {
+    background-color: #45a049;
+  }
+  
+  .post {
+    margin-bottom: 10px;
+  }
+  
+  .post-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .username {
+    font-weight: bold;
+  }
+  
+  .timestamp {
+    color: #555;
+    font-size: 0.8em;
+  }
+  
+  .comments {
+    margin-left: 20px;
+  }
+  
+  /* Add more styles as needed */
+  

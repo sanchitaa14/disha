@@ -20,6 +20,7 @@ app.use(express.json()) // an important statement baaki google karlena
 app.use('/api', require("./Routes/UserCreate"));//routes are helpful in breaking code into smaller parts, as calling all endpoints at one place is not good
 //note the above line will make an endpoint of localhost:5000/api/createuser as thats what we have used in the Usercreate file post ()
 app.use('/api', require("./Routes/DisplayData"));
+app.use('/api', require("./Routes/BlogPut"));
 //we can also make it all in index.js by using app.post
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

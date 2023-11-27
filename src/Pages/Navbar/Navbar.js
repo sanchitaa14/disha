@@ -51,22 +51,23 @@ function Navbar() {
                 </p>
             </div>
              {(localStorage.getItem("authToken"))?<p>
-                    <Link to="/blog">My Guide</Link>
+                    <Link to="/guide">My Guide</Link>
                 </p> : ""
              }
               {(localStorage.getItem("authToken"))?
-            <div id="navbar-right" className="navbar-right">
-                <button id="navbar-right-button" onClick={navigateSignup}>
-                    Join 
-                </button>
-            </div>
-            :
+           
             <div id="navbar-right" className="navbar-right nav-logout">
             <button id="navbar-right-button">My Guide
             </button>
             <button id="navbar-right-button" onClick={handleLogout}>Logout
             </button>
             </div>
+            :
+            <div id="navbar-right" className="navbar-right">
+            <button id="navbar-right-button" onClick={navigateSignup}>
+                Join 
+            </button>
+        </div>
             }
         </div>
     );
