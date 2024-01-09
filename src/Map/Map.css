@@ -1,0 +1,12 @@
+.Map{
+  margin: 9rem;
+}
+.background{
+  color: grey;
+}
+.btn-map{
+  color: rgb(199, 209, 218);
+  /* background-color: black; */
+  padding: 2rem;
+  size: 2rem;
+}

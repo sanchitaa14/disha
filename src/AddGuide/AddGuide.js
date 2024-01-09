@@ -1,95 +1,171 @@
-import axios from "../axios";
-import React, { useState } from "react";
-import styled from "styled-components";
-function AddGuide() {
-  const [name, setName] = useState("");
-  const [image, setImage] = useState("");
-  const [price, setPrice] = useState(0);
-  const [number, setNumber] = useState(0);
-  const [location, setLocation] = useState("");
-  const [description, setDescription] = useState("");
+import React, { useRef, useState } from 'react';
+import styled from 'styled-components';
+import emailjs from '@emailjs/browser';
+import { Link } from 'react-router-dom';
 
-  const addGuide = (e) => {
+function AddGuide() {
+  const formRef = useRef();
+
+  const [credentials, setCredentials] = useState({
+    name: "",
+    email: "",
+    password: "",
+    geolocation: "",
+    number: "",
+    image: "",
+    description: "",
+    anumber: ""
+  });
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    axios
-      .post("/guides/add", { name,price,location, image, number, description })
-      .then(() => {
-        setName("");
-        setImage("");
-        setPrice(0);
-        setNumber(0);
-        setDescription("");
-        setLocation("");
+    try {
+      const response = await emailjs.sendForm(
+        'service_7nxdcxu',
+        'template_xxmnpwu',
+        formRef.current,
+        'BmEW-G3_nkGJJ-pF-'
+      );
 
-      })
-      .catch((error) => alert(error.message));
+      console.log(response);
+
+      if (response && response.status === 200) {
+        alert('Thank you. We will get back to you as soon as possible, and let you know if you are eligible or not.');
+
+        setCredentials({
+          name: "",
+          email: "",
+          password: "",
+          geolocation: "",
+          number: "",
+          image: "",
+          description: "",
+          anumber: ""
+        });
+      } else {
+        throw new Error(`Failed to send email. Status: ${response.status}`);
+      }
+    } catch (error) {
+      console.error('Error during email sending:', error);
+      alert('An error occurred. Please try again.');
+    }
   };
+
+  const onChange = (event) => {
+    setCredentials({
+      ...credentials,
+      [event.target.name]: event.target.value
+    });
+  };
+
   return (
     <Container>
-      <Logo>
-        <h1>Disha</h1>
-      </Logo>
-
-      <FormContainer>
+      <FormContainer ref={formRef} onSubmit={handleSubmit}>
         <h3>Register Yourself as a Guide</h3>
 
+        {/* ... your existing input fields with ref attribute */}
         <InputContainer>
           <p>Name</p>
           <input
             type="text"
-            onChange={(e) => setName(e.target.value)}
-            value={name}
+            placeholder="Full Name"
+            id="fullname-field"
+            name="name"
+            value={credentials.name}
+            onChange={onChange}
           />
         </InputContainer>
+      
         <InputContainer>
           <p>ImageURL</p>
           <input
             type="text"
-            onChange={(e) => setImage(e.target.value)}
-            value={image}
+            placeholder="image url"
+            id="image-field"
+            name="image"
+            value={credentials.image}
+            onChange={onChange}
           />
         </InputContainer>
         <InputContainer>
           <p>A Short Description</p>
           <input
             type="text"
-            onChange={(e) => setDescription(e.target.value)}
-            value={description}
+            placeholder="Short description"
+            id="description-field"
+            name="description"
+            value={credentials.description}
+            onChange={onChange}
           />
         </InputContainer>
         <InputContainer>
           <p>Location(City)</p>
           <input
             type="text"
-            onChange={(e) => setLocation(e.target.value)}
-            value={location}
+            placeholder="Location"
+            id="location-field"
+            name="geolocation"
+            value={credentials.geolocation}
+            onChange={onChange}
           />
         </InputContainer>
         <InputContainer>
-          <p>Price</p>
+          <p>Password</p>
           <input
-            type="number"
-            onChange={(e) => setPrice(e.target.value)}
-            value={price}
+            type="password"
+            placeholder="password"
+            id="password-field"
+            name="password"
+            value={credentials.password}
+            onChange={onChange}
+          />
+
+        </InputContainer>
+        <InputContainer>
+          <p>Email:</p>
+          <input
+            type="text"
+            placeholder="email"
+            id="email-field"
+            name="email"
+            value={credentials.email}
+            onChange={onChange}
           />
         </InputContainer>
         <InputContainer>
-          <p>Number</p>
+          <p> Phone Number:</p>
           <input
             type="number"
-            onChange={(e) => setNumber(e.target.value)}
-            value={number}
+            placeholder="Phone Number"
+            id="number-field"
+            name="number"
+            value={credentials.number}
+            onChange={onChange}
+          />
+        </InputContainer>
+        <InputContainer>
+          <p>Adhaar Number:</p>
+          <input
+            type="number"
+            placeholder="Aadhar Number"
+            id="anumber-field"
+            name="anumber"
+            value={credentials.anumber}
+            onChange={onChange}
           />
         </InputContainer>
 
-        <Button onClick={addGuide}>Add Guide</Button>
+        {/* ... other input fields with ref attribute */}
+
+        <Button type="submit"><Link to ="/profile">Add Guide </Link></Button>
       </FormContainer>
     </Container>
   );
 }
 
 const Container = styled.div`
+background-color: light-grey;
   width: 40%;
   min-width: 450px;
   height: fit-content;
@@ -98,20 +174,12 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-`;
-
-const Logo = styled.div`
-  width: 120px;
-  margin-bottom: 20px;
-  img {
-    width: 100%;
-  }
 `;
 
 const FormContainer = styled.form`
   border: 1px solid lightgray;
   width: 55%;
+  margin-top: 5rem;
   height: fit-content;
   display: flex;
   flex-direction: column;
@@ -126,7 +194,6 @@ const FormContainer = styled.form`
     font-weight: 400;
     line-height: 33px;
     align-self: flex-start;
-
     margin-bottom: 10px;
   }
 `;
@@ -134,12 +201,10 @@ const FormContainer = styled.form`
 const InputContainer = styled.div`
   width: 100%;
   padding: 10px;
-
   p {
     font-size: 14px;
     font-weight: 600;
   }
-
   input {
     width: 95%;
     height: 33px;
@@ -147,7 +212,6 @@ const InputContainer = styled.div`
     border-radius: 5px;
     border: 1px solid lightgray;
     margin-top: 5px;
-
     &:hover {
       border: 1px solid orange;
     }

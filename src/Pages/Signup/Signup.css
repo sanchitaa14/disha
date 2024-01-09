@@ -6,7 +6,7 @@
     width: 100vw;
     height: 100vh;
     display: flex;
-    overflow-y: hidden;
+    overflow-y: hidden !important;
     background: radial-gradient(transparent 60%, rgb(0, 0, 0, 0.7));
 }
 

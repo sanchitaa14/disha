@@ -1,0 +1,40 @@
+/* Cart.css */
+
+.table-container {
+    margin: auto;
+    margin-top: 50px;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th, .table td {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .total-price {
+    margin-top: 20px;
+    text-align: right;
+  }
+  
+  .checkout-btn {
+    margin-top: 20px;
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
