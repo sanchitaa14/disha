@@ -1,90 +1,72 @@
-import React, { useEffect, useState } from 'react'
-import styled from "styled-components";
-import { useStateValue } from "../../StateProvider";
-import "./Card.css"
-export default function Card(name,price,location, image, number, description) {
-    const [{ basket }, dispatch] = useStateValue();
-    console.log("basket >>>>", basket);
-    const addToBasket = (e) => {
-      e.preventDefault();
-  
-      dispatch({
-        type: "ADD_TO_BASKET",
-        item: {
-          name,
-          location,
-          price,
-          image,
-          number,
-          description,
-        },
-      });
-    }; 
- 
- return (
-    <Container>
-    <Image>
-      <img src={image} alt="" />
-    </Image>
-    <Description>
-      <h5>{name}</h5>
-      <h2>{number}</h2>
-      <h2>{location}</h2>
-      <h3>{description}</h3>
-      <p>₹ {price}</p>
+import React, { useState } from 'react';
+import './Card.css'; // Import your CSS file for styling
+import { Link } from 'react-router-dom';
 
-      <button onClick={addToBasket}>Add to Cart</button>
-    </Description>
-  </Container>
+const Card = ({ guideInfo }) => {
+  const [qty, setQty] = useState(1);
+  const [size, setSize] = useState("hourly");
 
-  )
-}
-const Container = styled.div`
-  width: 100%;
-  height: 100%;
+  const handleQty = (e) => {
+    setQty(e.target.value);
+  };
 
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  z-index: 10;
-`;
-const Image = styled.div`
-  width: 100%;
+  const handleOptions = (e) => {
+    setSize(e.target.value);
+  };
 
-  display: flex;
-  flex-direction: column;
+  const handleAddToCart = () => {
+    alert(`Added to Cart: ${guideInfo.name}, Quantity: ${qty}, Size: ${size}`);
+  };
 
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  flex: 0.3;
-  img {
-    width: 180px;
-    height: 200px;
-  }
-`;
-const Description = styled.div`
-  width: 90%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  flex: 0.7;
+  const handleCheckLocation = () => {
+    alert(`Checking location for ${guideInfo.name}`);
+  };
 
-  h5 {
-    font-size: 16px;
-    font-weight: 600;
-  }
+  const finalPrice = qty * guideInfo.options[size];
 
-  p {
-    font-weight: 600;
-  }
+  return (
+    <div className="card-container">
+      <div className="input-location">
+        <input placeholder="Search Location" />
+        <button className="search-button">Search</button>
+      </div>
 
-  button {
-    width: 100%;
-    height: 33px;
-    background-color: #fa8900;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-  }`;
+      <div className="card mt-3">
+        <img src={guideInfo.img} className="card-img-top" alt="Guide" />
+        <div className="card-body">
+          <h5 className="card-title">{guideInfo.name}</h5>
+          <h6 className="card-title">{guideInfo.number}</h6>
+          <p className="card-text">{guideInfo.description}</p>
+          <div className="container container-select">
+            <select className="select-quantity" onChange={handleQty}>
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <option key={i} value={i}>
+                  {i}
+                </option>
+              ))}
+            </select>
+            <select className="select-options" onChange={handleOptions}>
+              {Object.keys(guideInfo.options).map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+            <div className="price-info">₹{finalPrice}/-</div>
+          </div>
+          <hr />
+          <div className="button-container">
+            <button className="btn btn-add-to-cart" onClick={handleAddToCart}>
+              Add to Cart
+            </button>
+            <button className="btn btn-check-location" onClick={handleCheckLocation}>
+              <Link to="/map">Check Location</Link>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Card;

@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
 import "./Home.css";
+// import { EarthCanvas } from "../../canvas/EarthCanvas";
 
 // Images
+import red from "../Images/red.jpg";
+import hawa from "../Images/hawa.jpg"
+import taj from "../Images/taj.jpg"
 import sky from "../Images/sky.png";
 import bg from "../Images/bg.png";
 import left from "../Images/left.png";
@@ -9,9 +13,12 @@ import right from "../Images/right.png";
 import bottom from "../Images/bottom.png";
 import line from "../Images/line.png";
 import { Link } from "react-router-dom";
+import Chatbot from "../../chatBot/Chat";
+import Footer from "../../Footer/Footer";
 
 function Home() {
-    useEffect(() => {
+    
+    useEffect(() => { 
         let text = document.getElementById("front-page-text");
         let leaf1 = document.getElementById("front-page-left");
         let leaf2 = document.getElementById("front-page-right");
@@ -39,6 +46,7 @@ function Home() {
             // }
         });
     }, []);
+    
 
     return (
         <div id="Home" className="Home">
@@ -102,11 +110,42 @@ function Home() {
                 <div className="bottom-div-right">
                     <span>AS A GUIDE</span>
                     <p>Be a guide and promote your local culture</p>
-                    <p>You decide the cost of your service</p>
+                    <p>Education Sources</p>
                     <p>Increases local employment rate</p>
                 </div>
             </div>
+            <div class="cover">
+        <div class="box">
+            <img src={taj} />
+            {/* <h2>Taj Mahal</h2> */}
+            
+
+
         </div>
+        <div class="box">
+            <img src={red} />
+            {/* <h2>red fort</h2> */}
+            {/* <h2>Red Fort</h2> */}
+            
+        </div>
+        <div class="box">
+            <img src={hawa} />
+            {/* <h2>Hawa Mahal</h2> */}
+
+        </div>
+    </div>
+   
+    <div className="ar">
+    <button class="glow-on-hover" type="button">
+      HOVER ME, AND ENTER INTO A NEW WORLD!
+    </button>
+    </div>
+    
+    {/* <EarthCanvas /> */}
+            <Chatbot/>
+            <Footer/>
+        </div>
+
     );
 }
 

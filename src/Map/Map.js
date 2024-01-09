@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "./Map.css";
+import { Link } from 'react-router-dom';
 
 export default function Map() {
   const [details, setDetails] = useState('');
@@ -29,12 +30,12 @@ export default function Map() {
     const { accuracy, latitude, longitude, altitude, heading, speed } = position.coords;
     reqcount++;
     setDetails(
-      "Accuracy: " + accuracy + "<br>" +
+      // "Accuracy: " + accuracy + "<br>" +
       "Latitude: " + latitude + "| Longitude " + longitude + "<br>" +
       "Altitude: " + altitude + "<br>" +
       "Heading: " + heading + "<br>" +
-      "Speed: " + speed + "<br>" +
-      "reqcount: " + reqcount
+      "Speed: " + speed + "<br>" 
+      // "reqcount: " + reqcount
     );
   }
 
@@ -56,13 +57,17 @@ export default function Map() {
   }
 
   return (
-    <div>
-      Map
+    <div className='background-map'>
+    <div className='Map'> 
+      This guide is currently here
       <div dangerouslySetInnerHTML={{ __html: details }} id='details'></div>
       <div id='map'></div>
-      <button onClick={buttonClickHandler}>
+      <button className="btn-map" onClick={buttonClickHandler}>
+        <Link to = "/guide">
         Stop watching location
+        </Link>
       </button>
+    </div>
     </div>
   );
 }

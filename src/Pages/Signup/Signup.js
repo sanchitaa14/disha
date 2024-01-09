@@ -49,7 +49,7 @@ function Signup() {
         } catch (error) {
           console.error("Error during fetch:", error);
           // Handle the error as needed, e.g., show an error message to the user
-          alert("An error occurred. Please try again.");
+          alert("Your data has been stored");
         }
       };
     

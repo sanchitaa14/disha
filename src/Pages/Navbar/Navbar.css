@@ -16,6 +16,7 @@ a {
     z-index: 200;
     display: flex;
     justify-content: center;
+    background-color: white;
 }
 .nav-logout{
     display: flex;
@@ -56,6 +57,9 @@ a {
     font-size: 16px;
 }
 .navbar-center a:hover {
+    background: white;
+    border-radius:1px;
+    transition: 2s;
     cursor: pointer;
 }
 
@@ -74,8 +78,13 @@ a {
     /* border: 1px solid black; */
     border: none;
     border-radius: 2px;
+    transition: all 0.4s;
 }
 
 .navbar-right button:hover {
     cursor: pointer;
+    transform: scale(1.3);
+    
 }
+
+
