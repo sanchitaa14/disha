@@ -31,21 +31,24 @@ This page will pop open on your browser
 ![image](https://github.com/sanchitaa14/disha/assets/118709611/a0171d4d-bdb1-4b3c-8b93-47d4275898f0)
 
 ## Usage
-Connecting Guides with tourists:
 
-Go on to find a guide, and book a guide registered on the page.
-Become a Guide:
+Connecting Guides with tourists: Go on to find a guide, and book a guide registered on the page.
 
-Use the be a guide option, register your details, it will then be sent to the moderator(me) and then if it seems like the person is fit to be a guide, the details will be stored in the backend.
+Become a Guide: Use the be a guide option, register your details, it will then be sent to the moderator(me) and then if it seems like the person is fit to be a guide, the details will be stored in the backend.
 In the works:
 Implementing an AR model to provide a virtual domain for travelling
 
 ## Tech Stack
 React.js
+
 Javascript
+
 MongoDB
+
 Express.js
+
 Node.js
+
 
 
 
