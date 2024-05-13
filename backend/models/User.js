@@ -22,6 +22,6 @@ const UserSchema = new Schema({
         required:true,
     }
 
-});                    //learn about callbacks, fetch datat is changed using callbacks
+});                    //learn about callbacks, fetch data is changed using callbacks
 module.exports = mongoose.model('user', UserSchema) //a model is a wrapper for schema sort of as well as makes it easier to perform CRUD operations, 'user' it creates a database in the system with the name user, model states how to store the data
 //we import a model using this statement, it helps in talking with the mongoDB

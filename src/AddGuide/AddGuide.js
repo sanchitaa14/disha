@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import emailjs from '@emailjs/browser';
 import { Link } from 'react-router-dom';
+import "./AddGuide.css"
 
 function AddGuide() {
   const formRef = useRef();
@@ -60,11 +61,10 @@ function AddGuide() {
   };
 
   return (
+    <section className='section-guide'>
     <Container>
-      <FormContainer ref={formRef} onSubmit={handleSubmit}>
-        <h3>Register Yourself as a Guide</h3>
-
-        {/* ... your existing input fields with ref attribute */}
+      <FormContainer ref={formRef} onSubmit={handleSubmit} className='form-container'>
+        <h3>Register Yourself as a Guide</h3> 
         <InputContainer>
           <p>Name</p>
           <input
@@ -156,17 +156,15 @@ function AddGuide() {
           />
         </InputContainer>
 
-        {/* ... other input fields with ref attribute */}
-
         <Button type="submit"><Link to ="/profile">Add Guide </Link></Button>
       </FormContainer>
     </Container>
+    </section>
   );
 }
 
 const Container = styled.div`
-background-color: light-grey;
-  width: 40%;
+  width: 80%;
   min-width: 450px;
   height: fit-content;
   padding: 15px;
@@ -186,7 +184,7 @@ const FormContainer = styled.form`
   align-items: center;
   justify-content: center;
   padding: 15px;
-  background: radial-gradient(transparent 60%, rgb(0, 0, 0, 0.7));
+  background-color: white;
   backdrop-filter: blur(10px);
   box-shadow: 0 0 10px 4px rgb(0, 0, 0, 0.4);
   h3 {

@@ -96,7 +96,7 @@ function Signup() {
             </div>
 
             <form onSubmit={handleSubmit} className="signup-form" id="signup-form"> 
-                <h1>Signup</h1>
+                <h1 className="header-signup">Signup</h1>
                 <input
                     type="text"
                     placeholder="Full Name"
@@ -142,7 +142,7 @@ function Signup() {
                     onChange = {onChange}
                 />
                 <button type="submit">Continue</button>
-                <p>
+                <p className="login-option">
                     Already have an account?{" "}
                     <Link to="/login">
                         <span>LogIn</span>

@@ -17,10 +17,13 @@ async(req,res)=>{
     if(!errors.isEmpty()){ //checks whether the req adheres to the above check, uses the second imported function
         return res.status(400),json({errors: errors.array()});
     } //gives an array or errors
+
     const salt =  await bcrypt.genSalt(10); //any value can be taken other than 10
+    
     let secPassword = await bcrypt.hash(req.body.password, salt);  //generating hash with two parameters 1)whose hash to be be generated and 2)the salt 
      //all bcrypt functions are async , the password above is the one taken from frontend, apart from bcrypt other hashing clients are also there
-    try{ // since it is an asynchronous operation it is required to use await otherwise it might not show the data
+    
+     try{ // since it is an asynchronous operation it is required to use await otherwise it might not show the data
        await User.create({   //note:order doesn't matter but the contents should be same as we have scheme
             name: req.body.name,
             password:secPassword,

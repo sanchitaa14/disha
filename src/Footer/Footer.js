@@ -14,8 +14,8 @@ export default function Footer() {
                 <h3>Contact Us</h3>
                 <p>Email:disha455@gmail.com</p>
                 <p>Phone:9319800157</p>
-                <p>Free sources to learn new languages <Link to = "/profile">here</Link></p>
-                <p><Link to = "/feedback">feedback</Link></p>
+                <p>Learn Languages <Link to = "/profile">here</Link></p>
+                <p><Link to = "/feedback">Feedback</Link></p>
 
 
     
@@ -25,10 +25,10 @@ export default function Footer() {
                 <ul class="list">
                 <li><a href="">Home</a></li>
                 <li><Link to = "/about">About</Link></li>
-                <li><a href="">services</a></li>
+                <li><a href="">Services</a></li>
                 <li><a href="">Contact</a></li>
                 </ul>
-                <hr />
+                
                 
             </div>
             <div class="footer-content">

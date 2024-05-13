@@ -1,6 +1,7 @@
 // ParentComponent.js
 import React from 'react';
 import Card from '../Card/Card';
+import "./Guide.css"
 
 const GuideData = [
   {
@@ -114,6 +115,10 @@ const GuideData = [
 const Guide = () => {
   return (
     <div>
+      <div className="input-location">
+        <input placeholder="Search Location" />
+        <button className="search-button">Search</button>
+      </div>
       {GuideData.map((guide, index) => (
         <Card key={index} guideInfo={guide} />
       ))}

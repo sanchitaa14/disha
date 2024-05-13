@@ -26,10 +26,6 @@ const Card = ({ guideInfo }) => {
 
   return (
     <div className="card-container">
-      <div className="input-location">
-        <input placeholder="Search Location" />
-        <button className="search-button">Search</button>
-      </div>
 
       <div className="card mt-3">
         <img src={guideInfo.img} className="card-img-top" alt="Guide" />

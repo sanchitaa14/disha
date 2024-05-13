@@ -77,7 +77,7 @@ function Feedback() {
                   type="text"
                   name="name"
                   value={form.name}
-                  placeholder=""
+                  placeholder="Jaya Jain"
                   onChange={handleChange}
                 />
               </div>
@@ -88,7 +88,7 @@ function Feedback() {
                   type="number"
                   name="phone"
                   value={form.phone}
-                  placeholder="number"
+                  placeholder="9489xxxxxx"
                   onChange={handleChange}
                 />
               </div>
