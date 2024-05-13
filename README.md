@@ -18,12 +18,15 @@ Install dependencies:
 
 
 2.1 Run backend
-``` cd backend ```
+```
+cd guide
+cd backend
+```
 
 2.2 Run frontend
 
 ```
-cd frontend
+cd guide
 npm i
 npm start
 ```
